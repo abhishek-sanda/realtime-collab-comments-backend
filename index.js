@@ -26,14 +26,14 @@ app.use('/auth', authRoutes);
 app.use('/ai', aiRoutes); // <-- AI endpoints
 
 app.use(cors({
-  origin: "http://localhost:5173",  // your frontend's port
+  origin: "https://realtime-collab-comments-frontend.vercel.app",  // your frontend's port
   methods: ["GET", "POST"],
   credentials: true
 }));
 
 const io = new Server(server, {
   cors: {
-    origin: 'http://localhost:5173',
+    origin: 'https://realtime-collab-comments-frontend.vercel.app',
     methods: ['GET', 'POST'],
     credentials: true
   }
@@ -65,6 +65,7 @@ io.on('connection', (socket) => {
 // Attach AI socket handlers (they will add additional listeners to same io)
 attachAISockets(io);
 
-server.listen(3001, () => {
-  console.log(`Server listening on port http://localhost:3001/comments/shared-doc`);
+const PORT = 3001;
+server.listen(PORT, () => {
+  console.log(`Server listening on port https://realtime-collab-comments-backend.onrender.com/comments/shared-doc`);
 });
