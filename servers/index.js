@@ -12,7 +12,7 @@ const messageRoutes = require('../routes/messages');
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
-  cors: { origin: process.env.FRONTEND_ORIGIN || 'http://localhost:5173', methods: ['GET', 'POST'] }
+  cors: { origin: process.env.FRONTEND_ORIGIN || 'https://realtime-collab-comments-frontend.vercel.app', methods: ['GET', 'POST'] }
 });
 
 mongoose.connect(process.env.MONGO_URI || '', {})
